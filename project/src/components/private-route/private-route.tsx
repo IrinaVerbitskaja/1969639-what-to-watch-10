@@ -1,0 +1,14 @@
+import {Navigate} from 'react-router-dom';
+import {AppRoute} from '../const';
+
+type PrivateRouteProps = {
+  children: JSX.Element;
+};
+
+function PrivateRoute({children}: PrivateRouteProps): JSX.Element {
+  const hasAccess = false;
+
+  return hasAccess ? children : <Navigate to={AppRoute.SignIn} />;
+}
+
+export default PrivateRoute;
