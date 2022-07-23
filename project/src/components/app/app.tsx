@@ -8,22 +8,21 @@ import MyList from '../../pages/my-list/my-list';
 import NotFoundScreen from '../../pages/not-found-screen/not-found-screen';
 import Player from '../../pages/player/player';
 import SignIn from '../../pages/sign-in/sign-in';
+import {Films, Comments} from '../../types/film';
 
-const film = {
-  title: 'Fantastic Beasts: The Crimes of Grindelwald',
-  genre: 'Fantastic',
-  year: 2011,
-  src: 'img/fantastic-beasts-the-crimes-of-grindelwald.jpg',
-  alt: 'Fantastic Beasts: The Crimes of Grindelwald'
+
+type Film = {
+  filmList: Films;
+  comments: Comments;
 };
 
-function App(): JSX.Element {
+function App({filmList, comments}: Film): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
         <Route
           path={AppRoute.Main}
-          element={<ChiefScreen {...film}/>}
+          element={<ChiefScreen {...filmList}/>}
         />
         <Route
           path={AppRoute.AddReview}
