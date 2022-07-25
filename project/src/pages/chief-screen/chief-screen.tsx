@@ -116,7 +116,7 @@ function ChiefScreen ({films, film}: FilmType): JSX.Element {
           </ul>
 
           <div className="catalog__films-list">
-            <FilmCardList {...films}/>
+            <FilmCardList filmsList = {films}/>
             <FilmCard />
             <FilmCard />
             <FilmCard />

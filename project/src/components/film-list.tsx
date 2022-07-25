@@ -1,9 +1,13 @@
 import {Films, Film} from '../types/film';
 import FilmCard from './film/film-card';
 
-function FilmCardList (props: Films): JSX.Element {
+type FilmCardList = {
+  filmsList: Films;
+}
+
+function FilmCardList ({filmsList}: FilmCardList): JSX.Element {
     return {
-      props.films.map((film: Film) => (<FilmCard {...film}/>))
+      filmsList.map((film: Film) => (<FilmCard {...film}/>))
     };
 }
 
