@@ -1,7 +1,9 @@
 import {Link} from 'react-router-dom';
 import FilmCard from '../../components/film/film-card';
+import FilmCardList from '../../components/film-list';
 import VisuallyHidden from '../../components/visually-hidden/visually-hidden';
 import Footer from '../../components/footer/footer';
+import {filmList} from '../../mocks/film';
 
 type FilmType = {
   title: string;
@@ -116,7 +118,7 @@ function ChiefScreen (props: FilmType): JSX.Element {
           </ul>
 
           <div className="catalog__films-list">
-            <FilmCard />
+            <FilmCardList {...filmList}/>
             <FilmCard />
             <FilmCard />
             <FilmCard />
