@@ -1,4 +1,4 @@
-import {Films} from '../types/film';
+import {Films, FilmOne} from '../types/film';
 
 export const filmList: Films = [
   {
@@ -50,3 +50,11 @@ export const filmList: Films = [
     filmName: 'Shutter Island',
   },
 ];
+
+export const film: FilmOne = {
+  title: 'Johnny English',
+  genre: 'drama',
+  year: 2014,
+  src: 'img/johnny-english.jpg',
+  alt: 'Johnny English',
+};

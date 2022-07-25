@@ -8,21 +8,21 @@ import MyList from '../../pages/my-list/my-list';
 import NotFoundScreen from '../../pages/not-found-screen/not-found-screen';
 import Player from '../../pages/player/player';
 import SignIn from '../../pages/sign-in/sign-in';
-import {Films, Comments} from '../../types/film';
-
+import {Films, Comments, FilmOne} from '../../types/film';
 
 type Film = {
   filmList: Films;
   comments: Comments;
+  film: FilmOne;
 };
 
-function App({filmList, comments}: Film): JSX.Element {
+function App({filmList, comments, film}: Film): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
         <Route
           path={AppRoute.Main}
-          element={<ChiefScreen {...filmList}/>}
+          element={<ChiefScreen films = {filmList} film = {film}/>}
         />
         <Route
           path={AppRoute.AddReview}

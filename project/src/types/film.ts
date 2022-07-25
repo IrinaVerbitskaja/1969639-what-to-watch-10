@@ -13,3 +13,11 @@ export type Comment = {
 export type Films = Film[];
 
 export type Comments = Comment[];
+
+export type FilmOne = {
+  title: string;
+  genre: string;
+  year: number;
+  src: string;
+  alt: string;
+};

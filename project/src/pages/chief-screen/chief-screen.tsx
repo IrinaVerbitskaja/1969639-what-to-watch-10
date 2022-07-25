@@ -3,17 +3,15 @@ import FilmCard from '../../components/film/film-card';
 import FilmCardList from '../../components/film-list';
 import VisuallyHidden from '../../components/visually-hidden/visually-hidden';
 import Footer from '../../components/footer/footer';
-import {filmList} from '../../mocks/film';
+import {Films, FilmOne} from '../../types/film';
+//import {filmList} from '../../mocks/film';
 
 type FilmType = {
-  title: string;
-  genre: string;
-  year: number;
-  src: string;
-  alt: string;
+  films: Films;
+  film: FilmOne;
 }
 
-function ChiefScreen (props: FilmType): JSX.Element {
+function ChiefScreen ({films, film}: FilmType): JSX.Element {
   return (
     <body>
 
@@ -50,14 +48,14 @@ function ChiefScreen (props: FilmType): JSX.Element {
         <div className="film-card__wrap">
           <div className="film-card__info">
             <div className="film-card__poster">
-              <img src= {props.src} alt={props.alt}width="218" height="327" />
+              <img src= {film.src} alt={film.alt}width="218" height="327" />
             </div>
 
             <div className="film-card__desc">
-              <h2 className="film-card__title">{props.title}</h2>
+              <h2 className="film-card__title">{film.title}</h2>
               <p className="film-card__meta">
-                <span className="film-card__genre">{props.genre}</span>
-                <span className="film-card__year">{props.year}</span>
+                <span className="film-card__genre">{film.genre}</span>
+                <span className="film-card__year">{film.year}</span>
               </p>
 
               <div className="film-card__buttons">
@@ -118,7 +116,7 @@ function ChiefScreen (props: FilmType): JSX.Element {
           </ul>
 
           <div className="catalog__films-list">
-            <FilmCardList {...filmList}/>
+            <FilmCardList {...films}/>
             <FilmCard />
             <FilmCard />
             <FilmCard />
