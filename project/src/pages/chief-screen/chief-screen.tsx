@@ -1,10 +1,9 @@
 import {Link} from 'react-router-dom';
-import FilmCard from '../../components/film/film-card';
-import FilmCardList from '../../components/film-list';
+import Logo from '../../components/logo/logo';
+import FilmCardList from '../../components/film-list/film-list';
 import VisuallyHidden from '../../components/visually-hidden/visually-hidden';
 import Footer from '../../components/footer/footer';
 import {Films, FilmOne} from '../../types/film';
-//import {filmList} from '../../mocks/film';
 
 type FilmType = {
   films: Films;
@@ -25,13 +24,8 @@ function ChiefScreen ({films, film}: FilmType): JSX.Element {
         <h1 className="visually-hidden">WTW</h1>
 
         <header className="page-header film-card__head">
-          <div className="logo">
-            <Link to= "/" className="logo__link">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </Link>
-          </div>
+
+          <Logo />
 
           <ul className="user-block">
             <li className="user-block__item">
@@ -116,26 +110,9 @@ function ChiefScreen ({films, film}: FilmType): JSX.Element {
           </ul>
 
           <div className="catalog__films-list">
+
             <FilmCardList filmsList = {films}/>
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
+
           </div>
 
           <div className="catalog__more">

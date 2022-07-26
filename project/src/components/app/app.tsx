@@ -26,7 +26,7 @@ function App({filmList, comments, film}: Film): JSX.Element {
         />
         <Route
           path={AppRoute.AddReview}
-          element={<AddReview />}
+          element={<AddReview film = {film}/>}
         />
         <Route
           path={AppRoute.FilmList}
@@ -36,13 +36,13 @@ function App({filmList, comments, film}: Film): JSX.Element {
           path={AppRoute.MyList}
           element={
             <PrivateRoute>
-              <MyList />
+              <MyList films = {filmList}/>
             </PrivateRoute>
           }
         />
         <Route
           path={AppRoute.Player}
-          element={<Player />}
+          element={<Player film = {film}/>}
         />
         <Route
           path={AppRoute.SignIn}

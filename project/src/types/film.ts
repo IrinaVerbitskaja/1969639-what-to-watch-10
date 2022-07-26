@@ -3,6 +3,7 @@ export type Film = {
   src: string;
   href: string;
   filmName: string;
+  hrefPage: string;
 };
 
 export type Comment = {
@@ -19,5 +20,7 @@ export type FilmOne = {
   genre: string;
   year: number;
   src: string;
+  href: string;
   alt: string;
+  hrefPage: string;
 };
