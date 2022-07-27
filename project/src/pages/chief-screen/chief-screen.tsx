@@ -12,7 +12,7 @@ type FilmType = {
 
 function ChiefScreen ({films, film}: FilmType): JSX.Element {
   return (
-    <body>
+    <>
 
       <VisuallyHidden />
 
@@ -123,7 +123,7 @@ function ChiefScreen ({films, film}: FilmType): JSX.Element {
         <Footer />
 
       </div>
-    </body>
+    </>
   );
 }
 

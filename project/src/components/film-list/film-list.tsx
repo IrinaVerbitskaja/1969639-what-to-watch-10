@@ -1,6 +1,6 @@
 import {Films, Film} from '../../types/film';
 import FilmCard from '../film/film-card';
-import {useState, MouseEvent} from 'react';
+import {useState} from 'react';
 
 type FilmList = {
   filmsList: Films;
@@ -8,11 +8,8 @@ type FilmList = {
 
 function FilmCardList ({filmsList}: FilmList): JSX.Element {
 
-  const [id, setId] = useState<number>(film.id);
-
-  const idChangeHandle = (evt: MouseEvent<HTMLDivElement>) => {
-    setId(film.id);
-  };
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [id, setId] = useState<number>(-1);
 
   return (
     <>
@@ -21,9 +18,10 @@ function FilmCardList ({filmsList}: FilmList): JSX.Element {
           <FilmCard id = {film.id}
             key = {film.id}
             src = {film.src}
+            hrefPage = {film.hrefPage}
             href = {film.href}
             filmName = {film.filmName}
-            onMouseMove = {idChangeHandle}
+            setId = {setId}
           />)
         )
       }
