@@ -1,7 +1,7 @@
 import {useState, ChangeEvent, Fragment} from 'react';
 
 const DEFAULT_RATING_VALUE = '0';
-const starts = Array.from({length: 10}, (i: number) => i + 1).reverse();
+const starts = Array.from({length: 10}, (_, i) => i + 1).reverse();
 
 function Comments (): JSX.Element {
 
