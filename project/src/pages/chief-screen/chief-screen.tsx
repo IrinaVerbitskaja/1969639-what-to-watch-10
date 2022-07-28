@@ -1,19 +1,18 @@
 import {Link} from 'react-router-dom';
-import FilmCard from '../../components/film/film-card';
+import Logo from '../../components/logo/logo';
+import FilmCardList from '../../components/film-list/film-list';
 import VisuallyHidden from '../../components/visually-hidden/visually-hidden';
 import Footer from '../../components/footer/footer';
+import {Films, FilmOne} from '../../types/film';
 
 type FilmType = {
-  title: string;
-  genre: string;
-  year: number;
-  src: string;
-  alt: string;
+  films: Films;
+  film: FilmOne;
 }
 
-function ChiefScreen (props: FilmType): JSX.Element {
+function ChiefScreen ({films, film}: FilmType): JSX.Element {
   return (
-    <body>
+    <>
 
       <VisuallyHidden />
 
@@ -25,13 +24,8 @@ function ChiefScreen (props: FilmType): JSX.Element {
         <h1 className="visually-hidden">WTW</h1>
 
         <header className="page-header film-card__head">
-          <div className="logo">
-            <Link to= "/" className="logo__link">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </Link>
-          </div>
+
+          <Logo />
 
           <ul className="user-block">
             <li className="user-block__item">
@@ -48,14 +42,14 @@ function ChiefScreen (props: FilmType): JSX.Element {
         <div className="film-card__wrap">
           <div className="film-card__info">
             <div className="film-card__poster">
-              <img src= {props.src} alt={props.alt}width="218" height="327" />
+              <img src= {film.src} alt={film.alt}width="218" height="327" />
             </div>
 
             <div className="film-card__desc">
-              <h2 className="film-card__title">{props.title}</h2>
+              <h2 className="film-card__title">{film.title}</h2>
               <p className="film-card__meta">
-                <span className="film-card__genre">{props.genre}</span>
-                <span className="film-card__year">{props.year}</span>
+                <span className="film-card__genre">{film.genre}</span>
+                <span className="film-card__year">{film.year}</span>
               </p>
 
               <div className="film-card__buttons">
@@ -116,26 +110,9 @@ function ChiefScreen (props: FilmType): JSX.Element {
           </ul>
 
           <div className="catalog__films-list">
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
+
+            <FilmCardList filmsList = {films}/>
+
           </div>
 
           <div className="catalog__more">
@@ -146,7 +123,7 @@ function ChiefScreen (props: FilmType): JSX.Element {
         <Footer />
 
       </div>
-    </body>
+    </>
   );
 }
 

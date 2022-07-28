@@ -1,13 +1,18 @@
 import VisuallyHidden from '../../components/visually-hidden/visually-hidden';
+import {FilmOne} from '../../types/film';
 
-function Player (): JSX.Element {
+type FilmType = {
+  film: FilmOne;
+}
+
+function Player ({film}: FilmType): JSX.Element {
   return (
     <body>
 
       <VisuallyHidden />
 
       <div className="player">
-        <video src="#" className="player__video" poster="img/player-poster.jpg"></video>
+        <video src={film.src} className="player__video" poster={film.src}></video>
 
         <button type="button" className="player__exit">Exit</button>
 

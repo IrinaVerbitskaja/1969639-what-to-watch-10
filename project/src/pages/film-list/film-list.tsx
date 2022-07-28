@@ -1,4 +1,5 @@
 import {Link} from 'react-router-dom';
+import Logo from '../../components/logo/logo';
 import VisuallyHidden from '../../components/visually-hidden/visually-hidden';
 import Footer from '../../components/footer/footer';
 
@@ -17,13 +18,8 @@ function FilmList (): JSX.Element {
           <h1 className="visually-hidden">WTW</h1>
 
           <header className="page-header film-card__head">
-            <div className="logo">
-              <Link to="/" className="logo__link">
-                <span className="logo__letter logo__letter--1">W</span>
-                <span className="logo__letter logo__letter--2">T</span>
-                <span className="logo__letter logo__letter--3">W</span>
-              </Link>
-            </div>
+
+            <Logo />
 
             <ul className="user-block">
               <li className="user-block__item">
