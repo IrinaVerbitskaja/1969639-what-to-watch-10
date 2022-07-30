@@ -7,7 +7,10 @@ type VideoPlayerProps = {
 }
 
 function VideoPlayer({src, poster, id}: VideoPlayerProps): JSX.Element {
+
   const [isLoading, setIsLoading] = useState(true);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
@@ -20,16 +23,19 @@ function VideoPlayer({src, poster, id}: VideoPlayerProps): JSX.Element {
       videoRef.current.addEventListener('loadeddata', () => setIsLoading(false));
     }
 
-    if (!isLoading) {
+    if (id !== -1 && !isLoading) {
       videoRef.current.play();
       return;
     }
 
-    videoRef.current.pause();
+    if (id === -1) {
+      videoRef.current.pause();
+    }
+
   }, [id, isLoading]);
 
   return (
-    <video src={src} className="player__video" poster={poster}></video>
+    <video ref={videoRef} src={src} className="player__video" poster={poster}></video>
   );
 }
 
