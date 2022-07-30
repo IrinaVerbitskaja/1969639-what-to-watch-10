@@ -9,8 +9,6 @@ type VideoPlayerProps = {
 function VideoPlayer({src, poster, id}: VideoPlayerProps): JSX.Element {
 
   const [isLoading, setIsLoading] = useState(true);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [isPlaying, setIsPlaying] = useState(false);
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
@@ -24,7 +22,7 @@ function VideoPlayer({src, poster, id}: VideoPlayerProps): JSX.Element {
     }
 
     if (id !== -1 && !isLoading) {
-      videoRef.current.play();
+      setTimeout (() => videoRef.current?.play(), 1000);
       return;
     }
 
@@ -35,7 +33,7 @@ function VideoPlayer({src, poster, id}: VideoPlayerProps): JSX.Element {
   }, [id, isLoading]);
 
   return (
-    <video ref={videoRef} src={src} className="player__video" poster={poster}></video>
+    <video ref={videoRef} src={id === -1 ? poster : src} className="player__video" poster={poster} muted></video>
   );
 }
 

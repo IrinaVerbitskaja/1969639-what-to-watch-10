@@ -19,7 +19,7 @@ function FilmCard (props: FilmCardProps): JSX.Element {
         <VideoPlayer
           src={props.href}
           poster={props.src}
-          id={props.id}
+          id={props.id === props.idState ? props.idState : -1}
         />
       </div>
       <h3 className="small-film-card__title">
