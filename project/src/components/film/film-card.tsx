@@ -1,5 +1,6 @@
 import {Link, generatePath} from 'react-router-dom';
 import {FilmCardProps} from './types';
+import Player from '../../pages/player/player';
 import {AppRoute} from '../const';
 
 function FilmCard (props: FilmCardProps): JSX.Element {
