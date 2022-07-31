@@ -1,14 +1,12 @@
-import {useState, useEffect, useRef} from 'react';
+import {useEffect, useRef} from 'react';
 
 type VideoPlayerProps = {
   src: string;
   poster: string;
-  id: number;
+  activeCard: boolean;
 }
 
-function VideoPlayer({src, poster, id}: VideoPlayerProps): JSX.Element {
-
-  const [isLoading, setIsLoading] = useState(true);
+function VideoPlayer({src, poster, activeCard}: VideoPlayerProps): JSX.Element {
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
@@ -17,23 +15,21 @@ function VideoPlayer({src, poster, id}: VideoPlayerProps): JSX.Element {
       return;
     }
 
-    if (id !== -1) {
-      videoRef.current.addEventListener('loadeddata', () => setIsLoading(false));
+    let timer;
+
+    if (activeCard) {
+      timer = setTimeout (() => videoRef.current?.play(), 1000);
     }
 
-    if (id !== -1 && !isLoading) {
-      setTimeout (() => videoRef.current?.play(), 1000);
-      return;
+    if (!activeCard) {
+      clearTimeout(timer);
+      videoRef.current.load();
     }
 
-    if (id === -1) {
-      videoRef.current.pause();
-    }
-
-  }, [id, isLoading]);
+  }, [activeCard]);
 
   return (
-    <video ref={videoRef} src={id === -1 ? poster : src} className="player__video" poster={poster} muted></video>
+    <video ref={videoRef} src={src} className="player__video" poster={poster} muted preload="metadata"></video>
   );
 }
 

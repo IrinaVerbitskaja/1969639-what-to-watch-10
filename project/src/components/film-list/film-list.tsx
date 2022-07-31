@@ -1,5 +1,5 @@
 import {Films, Film} from '../../types/film';
-import FilmCard from '../film/film-card';
+import FilmCard from '../film-card/film-card';
 import {useState} from 'react';
 
 type FilmList = {
@@ -21,7 +21,7 @@ function FilmCardList ({filmsList}: FilmList): JSX.Element {
             href = {film.href}
             filmName = {film.filmName}
             setId = {setId}
-            idState = {id}
+            idActiveCard = {id}
           />)
         )
       }

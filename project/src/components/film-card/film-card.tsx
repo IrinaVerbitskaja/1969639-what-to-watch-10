@@ -15,11 +15,11 @@ function FilmCard (props: FilmCardProps): JSX.Element {
 
   return (
     <article className="small-film-card catalog__films-card" onMouseEnter={setIdHandle} onMouseLeave={resetIdHandle}>
-      <div className="small-film-card__image" id = {`${props.id}`}>
+      <div className="small-film-card__image">
         <VideoPlayer
           src={props.href}
           poster={props.src}
-          id={props.id === props.idState ? props.idState : -1}
+          activeCard={props.id === props.idActiveCard}
         />
       </div>
       <h3 className="small-film-card__title">
