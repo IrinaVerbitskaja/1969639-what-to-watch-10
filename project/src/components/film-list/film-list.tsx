@@ -21,7 +21,7 @@ function FilmCardList ({filmsList}: FilmList): JSX.Element {
             href = {film.href}
             filmName = {film.filmName}
             setId = {setId}
-            idActiveCard = {id}
+            idState = {id}
           />)
         )
       }

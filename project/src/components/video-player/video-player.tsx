@@ -11,20 +11,13 @@ function VideoPlayer({src, poster, activeCard}: VideoPlayerProps): JSX.Element {
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
-    if (videoRef.current === null) {
-      return;
-    }
+    const timer = activeCard && setTimeout(() => videoRef.current?.play(), 1000);
 
-    let timer;
+    !activeCard && videoRef.current?.load();
 
-    if (activeCard) {
-      timer = setTimeout (() => videoRef.current?.play(), 1000);
-    }
-
-    if (!activeCard) {
-      clearTimeout(timer);
-      videoRef.current.load();
-    }
+    return () => {
+      timer && clearTimeout(timer);
+    };
 
   }, [activeCard]);
 
