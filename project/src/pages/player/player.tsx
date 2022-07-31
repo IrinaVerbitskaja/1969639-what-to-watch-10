@@ -7,12 +7,12 @@ type FilmType = {
 
 function Player ({film}: FilmType): JSX.Element {
   return (
-    <body>
+    <>
 
       <VisuallyHidden />
 
       <div className="player">
-        <video src={film.src} className="player__video" poster={film.src}></video>
+        <video src={film.href} className="player__video" poster={film.src}></video>
 
         <button type="button" className="player__exit">Exit</button>
 
@@ -43,7 +43,7 @@ function Player ({film}: FilmType): JSX.Element {
           </div>
         </div>
       </div>
-    </body>
+    </>
   );
 }
 

@@ -5,7 +5,7 @@ import Footer from '../../components/footer/footer';
 
 function FilmList (): JSX.Element {
   return (
-    <body>
+    <>
 
       <VisuallyHidden />
 
@@ -150,7 +150,7 @@ function FilmList (): JSX.Element {
         <Footer />
 
       </div>
-    </body>
+    </>
   );
 }
 
