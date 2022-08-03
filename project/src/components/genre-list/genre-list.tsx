@@ -15,12 +15,12 @@ function GenreList ({filmsList}: FilmList): JSX.Element {
 
   return (
     <ul className="catalog__genres-list">
-      <li className="catalog__genres-item catalog__genres-item--active" onChange={() => dispatch(changeGenre('All genres'))}>
+      <li className="catalog__genres-item catalog__genres-item--active" onClick={() => dispatch(changeGenre('All genres'))}>
         <Link to= "/" className="catalog__genres-link">All genres</Link>
       </li>
       {genreList.map((value) =>
         (
-          <li className="catalog__genres-item" key={value} onChange={() => dispatch(changeGenre({value}))}>
+          <li className="catalog__genres-item" key={value} onClick={() => dispatch(changeGenre(`${value}`))}>
             <Link to= "/" className="catalog__genres-link">{value}</Link>
           </li>
         ))}
