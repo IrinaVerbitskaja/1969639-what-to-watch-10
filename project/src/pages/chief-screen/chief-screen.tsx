@@ -2,6 +2,7 @@ import {Link} from 'react-router-dom';
 import Logo from '../../components/logo/logo';
 import FilmCardList from '../../components/film-list/film-list';
 import VisuallyHidden from '../../components/visually-hidden/visually-hidden';
+import GenreList from '../../components/genre-list/genre-list';
 import Footer from '../../components/footer/footer';
 import {Films, FilmOne} from '../../types/film';
 
@@ -76,38 +77,7 @@ function ChiefScreen ({films, film}: FilmType): JSX.Element {
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-          <ul className="catalog__genres-list">
-            <li className="catalog__genres-item catalog__genres-item--active">
-              <Link to= "/" className="catalog__genres-link">All genres</Link>
-            </li>
-            <li className="catalog__genres-item">
-              <Link to= "/" className="catalog__genres-link">Comedies</Link>
-            </li>
-            <li className="catalog__genres-item">
-              <Link to= "/" className="catalog__genres-link">Crime</Link>
-            </li>
-            <li className="catalog__genres-item">
-              <Link to= "/" className="catalog__genres-link">Documentary</Link>
-            </li>
-            <li className="catalog__genres-item">
-              <Link to= "/" className="catalog__genres-link">Dramas</Link>
-            </li>
-            <li className="catalog__genres-item">
-              <Link to= "/" className="catalog__genres-link">Horror</Link>
-            </li>
-            <li className="catalog__genres-item">
-              <Link to= "/" className="catalog__genres-link">Kids & Family</Link>
-            </li>
-            <li className="catalog__genres-item">
-              <Link to= "/" className="catalog__genres-link">Romance</Link>
-            </li>
-            <li className="catalog__genres-item">
-              <Link to= "/" className="catalog__genres-link">Sci-Fi</Link>
-            </li>
-            <li className="catalog__genres-item">
-              <Link to= "/" className="catalog__genres-link">Thrillers</Link>
-            </li>
-          </ul>
+          <GenreList filmsList={films}/>
 
           <div className="catalog__films-list">
 

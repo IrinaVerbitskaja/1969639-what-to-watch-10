@@ -4,6 +4,7 @@ export type Film = {
   href: string;
   filmName: string;
   hrefPage: string;
+  genre: string;
 };
 
 export type Comment = {
