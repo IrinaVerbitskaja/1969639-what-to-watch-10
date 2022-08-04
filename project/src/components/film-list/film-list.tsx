@@ -11,9 +11,7 @@ function FilmCardList ({filmsList}: FilmList): JSX.Element {
 
   const [id, setId] = useState<number>(-1);
   const {genre} = useAppSelector((state) => state);
-  console.log(genre);
   const films = filmsList.filter((film) => film.genre === genre || genre === 'All genres');
-  console.log(films);
 
   return (
     <>

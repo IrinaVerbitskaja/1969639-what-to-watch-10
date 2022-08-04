@@ -1,4 +1,3 @@
-import {Link} from 'react-router-dom';
 import {useAppDispatch} from '../../hooks/index';
 import {changeGenre} from '../../store/action';
 import {Films} from '../../types/film';
@@ -16,12 +15,12 @@ function GenreList ({filmsList}: FilmList): JSX.Element {
   return (
     <ul className="catalog__genres-list">
       <li className="catalog__genres-item catalog__genres-item--active" onClick={() => dispatch(changeGenre('All genres'))}>
-        <Link to= "/" className="catalog__genres-link">All genres</Link>
+        All genres
       </li>
       {genreList.map((value) =>
         (
           <li className="catalog__genres-item" key={value} onClick={() => dispatch(changeGenre(`${value}`))}>
-            <Link to= "/" className="catalog__genres-link">{value}</Link>
+            {value}
           </li>
         ))}
     </ul>
