@@ -9,18 +9,18 @@ import MyList from '../../pages/my-list/my-list';
 import NotFoundScreen from '../../pages/not-found-screen/not-found-screen';
 import Player from '../../pages/player/player';
 import SignIn from '../../pages/sign-in/sign-in';
-import {Films, Comments, FilmOne} from '../../types/film';
+import {Comments, FilmOne} from '../../types/film';
 import LoadingScreen from '../../pages/loading-screen/loading-screen';
 
 type Film = {
-  filmList: Films;
+  //filmList: Films;
   comments: Comments;
   film: FilmOne;
 };
 
-function App({filmList, comments, film}: Film): JSX.Element {
+function App({comments, film}: Film): JSX.Element {
 
-  const {isDataLoaded} = useAppSelector((state) => state);
+  const {isDataLoaded, films} = useAppSelector((state) => state);
 
   if (isDataLoaded) {
     return (
@@ -33,7 +33,7 @@ function App({filmList, comments, film}: Film): JSX.Element {
       <Routes>
         <Route
           path={AppRoute.Main}
-          element={<ChiefScreen films = {filmList} film = {film}/>}
+          element={<ChiefScreen films = {films} film = {film}/>}
         />
         <Route
           path={AppRoute.AddReview}
@@ -47,7 +47,7 @@ function App({filmList, comments, film}: Film): JSX.Element {
           path={AppRoute.MyList}
           element={
             <PrivateRoute>
-              <MyList films = {filmList}/>
+              <MyList films = {films}/>
             </PrivateRoute>
           }
         />
