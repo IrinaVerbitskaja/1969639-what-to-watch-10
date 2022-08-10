@@ -17,13 +17,13 @@ function FilmCard (props: FilmCardProps): JSX.Element {
     <article className="small-film-card catalog__films-card" onMouseEnter={setIdHandle} onMouseLeave={resetIdHandle}>
       <div className="small-film-card__image">
         <VideoPlayer
-          src={props.href}
-          poster={props.src}
+          src={props.previewVideoLink}
+          poster={props.posterImage}
           activeCard={props.id === props.idState}
         />
       </div>
       <h3 className="small-film-card__title">
-        <Link className="small-film-card__link" to={generatePath(AppRoute.FilmList, {id: `${props.id}`})}>{props.filmName}</Link>
+        <Link className="small-film-card__link" to={generatePath(AppRoute.FilmList, {id: `${props.id}`})}>{props.name}</Link>
       </h3>
     </article>
   );

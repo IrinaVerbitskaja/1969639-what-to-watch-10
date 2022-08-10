@@ -17,15 +17,26 @@ function FilmCardList ({filmsList}: FilmList): JSX.Element {
     <>
       {
         films.map((film: Film) => (
-          <FilmCard id = {film.id}
-            key = {film.id}
-            src = {film.src}
-            hrefPage = {film.hrefPage}
-            href = {film.href}
-            filmName = {film.filmName}
-            genre = {film.genre}
-            setId = {setId}
-            idState = {id}
+          <FilmCard id={film.id}
+            key={film.id}
+            previewVideoLink={film.previewVideoLink}
+            posterImage={film.posterImage}
+            videoLink={film.videoLink}
+            name={film.name}
+            genre={film.genre}
+            setId={setId}
+            idState={id}
+            previewImage={film.previewImage}
+            backgroundImage={film.backgroundImage}
+            backgroundColor={film.backgroundColor}
+            description={film.description}
+            rating={film.rating}
+            scoresCount={film.scoresCount}
+            director={film.director}
+            starring={film.starring}
+            runTime={film.runTime}
+            released={film.released}
+            isFavorite={film.isFavorite}
           />)
         )
       }
