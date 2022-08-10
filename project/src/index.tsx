@@ -5,6 +5,9 @@ import App from './components/app/app';
 import {filmList, film} from './mocks/film';
 import {commentsFilm} from './mocks/review';
 import {store} from './store/index';
+import {fetchFilmAction} from './store/api-actions';
+
+store.dispatch(fetchFilmAction());
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,

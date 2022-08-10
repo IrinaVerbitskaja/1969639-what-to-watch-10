@@ -6,3 +6,9 @@ export enum AppRoute {
   Player = '/player/:id',
   SignIn = '/login'
 }
+
+export enum APIRoute {
+  Films = '/films',
+  Login = '/login',
+  Logout = '/logout',
+}

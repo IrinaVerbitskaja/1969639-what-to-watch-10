@@ -1,5 +1,6 @@
 import {Route, BrowserRouter, Routes} from 'react-router-dom';
 import {AppRoute} from '../const';
+import {useAppSelector} from '../../hooks';
 import PrivateRoute from '../private-route/private-route';
 import ChiefScreen from '../../pages/chief-screen/chief-screen';
 import AddReview from '../../pages/add-review/add-review';
@@ -9,6 +10,7 @@ import NotFoundScreen from '../../pages/not-found-screen/not-found-screen';
 import Player from '../../pages/player/player';
 import SignIn from '../../pages/sign-in/sign-in';
 import {Films, Comments, FilmOne} from '../../types/film';
+import LoadingScreen from '../../pages/loading-screen/loading-screen';
 
 type Film = {
   filmList: Films;
@@ -17,6 +19,15 @@ type Film = {
 };
 
 function App({filmList, comments, film}: Film): JSX.Element {
+
+  const {isDataLoaded} = useAppSelector((state) => state);
+
+  if (isDataLoaded) {
+    return (
+      <LoadingScreen />
+    );
+  }
+
   return (
     <BrowserRouter>
       <Routes>
