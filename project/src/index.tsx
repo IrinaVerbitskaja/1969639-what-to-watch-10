@@ -17,7 +17,6 @@ root.render(
   <React.StrictMode>
     <Provider store = {store}>
       <App
-        //filmList = {filmList}
         comments = {commentsFilm}
         film = {film}
       />

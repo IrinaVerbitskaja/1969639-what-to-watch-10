@@ -13,7 +13,6 @@ import {Comments, FilmOne} from '../../types/film';
 import LoadingScreen from '../../pages/loading-screen/loading-screen';
 
 type Film = {
-  //filmList: Films;
   comments: Comments;
   film: FilmOne;
 };
