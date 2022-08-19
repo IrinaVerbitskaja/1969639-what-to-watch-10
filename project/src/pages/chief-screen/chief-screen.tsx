@@ -4,6 +4,8 @@ import FilmCardList from '../../components/film-list/film-list';
 import VisuallyHidden from '../../components/visually-hidden/visually-hidden';
 import GenreList from '../../components/genre-list/genre-list';
 import Footer from '../../components/footer/footer';
+import {useAppDispatch, useAppSelector} from '../../hooks/index';
+import {increaseCountShownFilms} from '../../store/action';
 import {Films, FilmOne} from '../../types/film';
 
 type FilmType = {
@@ -12,6 +14,8 @@ type FilmType = {
 }
 
 function ChiefScreen ({films, film}: FilmType): JSX.Element {
+  const dispatch = useAppDispatch();
+  const {countShownFilms, countFilms} = useAppSelector((state) => state);
   return (
     <>
 
@@ -86,7 +90,15 @@ function ChiefScreen ({films, film}: FilmType): JSX.Element {
           </div>
 
           <div className="catalog__more">
-            <button className="catalog__button" type="button">Show more</button>
+            <button
+              className={countShownFilms >= countFilms ? 'catalog__button visually-hidden' : 'catalog__button'}
+              type="button"
+              onClick={() => {
+                dispatch(increaseCountShownFilms());
+              }}
+            >
+              Show more
+            </button>
           </div>
         </section>
 
@@ -98,3 +110,4 @@ function ChiefScreen ({films, film}: FilmType): JSX.Element {
 }
 
 export default ChiefScreen;
+
