@@ -89,9 +89,9 @@ function ChiefScreen ({films, film}: FilmType): JSX.Element {
 
           </div>
 
-          <div className="catalog__more">
+          <div className={countShownFilms >= countFilms ? 'catalog__more visually-hidden' : 'catalog__more'}>
             <button
-              className={countShownFilms >= countFilms ? 'catalog__button visually-hidden' : 'catalog__button'}
+              className="catalog__button"
               type="button"
               onClick={() => {
                 dispatch(increaseCountShownFilms());
