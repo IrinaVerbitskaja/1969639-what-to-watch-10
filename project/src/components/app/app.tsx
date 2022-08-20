@@ -10,6 +10,7 @@ import NotFoundScreen from '../../pages/not-found-screen/not-found-screen';
 import Player from '../../pages/player/player';
 import SignIn from '../../pages/sign-in/sign-in';
 import {Comments, FilmOne} from '../../types/film';
+import {isCheckedAuth} from '../app/isAuth';
 import LoadingScreen from '../../pages/loading-screen/loading-screen';
 
 type Film = {
@@ -19,9 +20,9 @@ type Film = {
 
 function App({comments, film}: Film): JSX.Element {
 
-  const {isDataLoaded, films} = useAppSelector((state) => state);
+  const {authorizationStatus, isDataLoaded, films} = useAppSelector((state) => state);
 
-  if (isDataLoaded) {
+  if (isCheckedAuth(authorizationStatus) || isDataLoaded) {
     return (
       <LoadingScreen />
     );
