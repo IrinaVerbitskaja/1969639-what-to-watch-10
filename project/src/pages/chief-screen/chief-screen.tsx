@@ -7,6 +7,7 @@ import Footer from '../../components/footer/footer';
 import {useAppDispatch, useAppSelector} from '../../hooks/index';
 import {increaseCountShownFilms} from '../../store/action';
 import {Films, FilmOne} from '../../types/film';
+import {AppRoute} from '../../components/const';
 
 type FilmType = {
   films: Films;
@@ -39,7 +40,7 @@ function ChiefScreen ({films, film}: FilmType): JSX.Element {
               </div>
             </li>
             <li className="user-block__item">
-              <Link to="/" className="user-block__link">Sign out</Link>
+              <Link to={AppRoute.SignIn} className="user-block__link">Sign out</Link>
             </li>
           </ul>
         </header>
