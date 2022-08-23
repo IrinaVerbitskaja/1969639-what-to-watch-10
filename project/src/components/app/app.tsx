@@ -46,7 +46,9 @@ function App({comments, film}: Film): JSX.Element {
         <Route
           path={AppRoute.MyList}
           element={
-            <PrivateRoute>
+            <PrivateRoute
+              authorizationStatus={authorizationStatus}
+            >
               <MyList films = {films}/>
             </PrivateRoute>
           }

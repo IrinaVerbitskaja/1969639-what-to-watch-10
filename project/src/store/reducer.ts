@@ -9,7 +9,7 @@ type InitialState = {
   isDataLoaded: boolean,
   countShownFilms: number,
   countFilms: number,
-  authorizationStatus: string,
+  authorizationStatus: AuthorizationStatus,
   error: string | null,
 };
 
