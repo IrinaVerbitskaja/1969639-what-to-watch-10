@@ -4,12 +4,15 @@ import VisuallyHidden from '../../components/visually-hidden/visually-hidden';
 import Footer from '../../components/footer/footer';
 import {Films} from '../../types/film';
 import FilmCardList from '../../components/film-list/film-list';
+import {logoutAction} from '../../store/api-actions';
+import {useAppDispatch} from '../../hooks';
 
 type FilmType = {
   films: Films;
 }
 
 function MyList ({films}: FilmType): JSX.Element {
+  const dispatch = useAppDispatch();
   return (
     <body>
 
@@ -28,7 +31,16 @@ function MyList ({films}: FilmType): JSX.Element {
               </div>
             </li>
             <li className="user-block__item">
-              <Link to="/" className="user-block__link">Sign out</Link>
+              <Link
+                onClick={(evt) => {
+                  evt.preventDefault();
+                  dispatch(logoutAction());
+                }}
+                to='/'
+                className="user-block__link"
+              >
+                Sign out
+              </Link>
             </li>
           </ul>
         </header>

@@ -1,4 +1,4 @@
-import {Route, BrowserRouter, Routes} from 'react-router-dom';
+import {Route, Routes} from 'react-router-dom';
 import {AppRoute} from '../const';
 import {useAppSelector} from '../../hooks';
 import PrivateRoute from '../private-route/private-route';
@@ -12,6 +12,8 @@ import SignIn from '../../pages/sign-in/sign-in';
 import {Comments, FilmOne} from '../../types/film';
 import {isCheckedAuth} from '../app/isAuth';
 import LoadingScreen from '../../pages/loading-screen/loading-screen';
+import HistoryRouter from '../history-route/history-route';
+import browserHistory from '../../browser-history';
 
 type Film = {
   comments: Comments;
@@ -29,7 +31,7 @@ function App({comments, film}: Film): JSX.Element {
   }
 
   return (
-    <BrowserRouter>
+    <HistoryRouter history={browserHistory}>
       <Routes>
         <Route
           path={AppRoute.Main}
@@ -66,7 +68,7 @@ function App({comments, film}: Film): JSX.Element {
           element={<NotFoundScreen />}
         />
       </Routes>
-    </BrowserRouter>
+    </HistoryRouter>
   );
 }
 
