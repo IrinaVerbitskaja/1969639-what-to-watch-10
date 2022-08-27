@@ -1,4 +1,5 @@
-import {useRef, FormEvent} from 'react';
+import {useForm, SubmitHandler} from 'react-hook-form';
+import {ErrorMessage} from '@hookform/error-message';
 import Logo from '../../components/logo/logo';
 import VisuallyHidden from '../../components/visually-hidden/visually-hidden';
 import Footer from '../../components/footer/footer';
@@ -9,27 +10,18 @@ import {AuthData} from '../../types/auth-data';
 import {AppRoute} from '../../components/const';
 
 function SignIn (): JSX.Element {
-
-  const loginRef = useRef<HTMLInputElement | null>(null);
-  const passwordRef = useRef<HTMLInputElement | null>(null);
+  const { register, handleSubmit, formState: { errors } } = useForm<AuthData>({
+    criteriaMode: 'all'
+  });
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const onSubmit = (authData: AuthData) => {
+  const onSubmit: SubmitHandler<AuthData> = (authData: AuthData) => {
     dispatch(loginAction(authData));
+    navigate(AppRoute.Main);
   };
 
-  const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
-    evt.preventDefault();
-
-    if (loginRef.current !== null && passwordRef.current !== null) {
-      onSubmit({
-        login: loginRef.current.value,
-        password: passwordRef.current.value,
-      });
-    }
-  };
   return (
     <body>
 
@@ -47,35 +39,52 @@ function SignIn (): JSX.Element {
           <form
             action=" "
             className="sign-in__form"
-            onSubmit={handleSubmit}
+            onSubmit={handleSubmit(onSubmit)}
           >
             <div className="sign-in__fields">
               <div className="sign-in__field">
                 <input
-                  ref={loginRef}
+                  {...register('email', { pattern: /^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$/i })}
                   className="sign-in__input"
                   type="email"
+                  name="email"
                   placeholder="Email address"
-                  name="user-email"
                   id="user-email"
                 />
-                <label className="sign-in__label visually-hidden" htmlFor="user-email">Email address</label>
+                <label className="sign-in__label visually-hidden" htmlFor="email">Email address</label>
               </div>
               <div className="sign-in__field">
                 <input
-                  ref={passwordRef}
+                  {...register('password',
+                    {
+                      required: 'This input is required.',
+                      pattern: {
+                        value: /(?=.*[0-9])(?=.*[A-Za-z])[0-9a-zA-Z]{2,}/i,
+                        message: 'Пароль должен содержать, как минимум, 1 цифру и 1 букву'
+                      },
+
+                    })
+                  }
                   className="sign-in__input"
                   type="password"
+                  name="password"
                   placeholder="Password"
-                  name="user-password"
-                  id="user-password"
+                  required
                 />
-                <label className="sign-in__label visually-hidden" htmlFor="user-password">Password</label>
+                <ErrorMessage
+                  errors={errors}
+                  name="password"
+                  render={({ messages }) => messages
+                    ? Object.entries(messages).map(([type, message]) => (
+                      <p key={type}>{message}</p>
+                    ))
+                    : null}
+                />
+                <label className="sign-in__label visually-hidden" htmlFor="password">Password</label>
               </div>
             </div>
             <div className="sign-in__submit">
               <button
-                onClick={() => navigate(AppRoute.Main)}
                 className="sign-in__btn"
                 type="submit"
               >

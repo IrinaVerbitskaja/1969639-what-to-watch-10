@@ -7,7 +7,8 @@ import Footer from '../../components/footer/footer';
 import {useAppDispatch, useAppSelector} from '../../hooks/index';
 import {increaseCountShownFilms} from '../../store/action';
 import {Films, FilmOne} from '../../types/film';
-import {AppRoute} from '../../components/const';
+import {AppRoute, AuthorizationStatus} from '../../components/const';
+import {logoutAction} from '../../store/api-actions';
 
 type FilmType = {
   films: Films;
@@ -16,7 +17,7 @@ type FilmType = {
 
 function ChiefScreen ({films, film}: FilmType): JSX.Element {
   const dispatch = useAppDispatch();
-  const {countShownFilms, countFilms} = useAppSelector((state) => state);
+  const {countShownFilms, countFilms, authorizationStatus} = useAppSelector((state) => state);
   return (
     <>
 
@@ -33,16 +34,33 @@ function ChiefScreen ({films, film}: FilmType): JSX.Element {
 
           <Logo />
 
-          <ul className="user-block">
-            <li className="user-block__item">
-              <div className="user-block__avatar">
-                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-              </div>
-            </li>
-            <li className="user-block__item">
-              <Link to={AppRoute.SignIn} className="user-block__link">Sign out</Link>
-            </li>
-          </ul>
+          {authorizationStatus === AuthorizationStatus.Auth ?
+            <ul className="user-block">
+              <li className="user-block__item">
+                <Link to={AppRoute.MyList}>
+                  <div className="user-block__avatar">
+                    <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+                  </div>
+                </Link>
+              </li>
+              <li className="user-block__item">
+                <Link
+                  onClick={(evt) => {
+                    evt.preventDefault();
+                    dispatch(logoutAction());
+                  }}
+                  to="#"
+                  className="user-block__link"
+                >
+                Sign out
+                </Link>
+              </li>
+            </ul>
+            :
+            <div className="user-block">
+              <Link to={AppRoute.SignIn} className="user-block__link">Sign in</Link>
+            </div>}
+
         </header>
 
         <div className="film-card__wrap">
